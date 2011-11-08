@@ -1,3 +1,5 @@
+#include "DepthEngine.h"
+
 #pragma once
 
 namespace first_kinect {
@@ -36,6 +38,8 @@ namespace first_kinect {
 		}
 	private: System::Windows::Forms::Button^  btnStart;
 	private: System::Windows::Forms::Button^  btnStop;
+	private: System::IO::Ports::SerialPort^  serialPort1;
+	private: System::ComponentModel::IContainer^  components;
 	protected: 
 
 
@@ -45,7 +49,7 @@ namespace first_kinect {
 		/// <summary>
 		/// 必要なデザイナー変数です。
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -54,13 +58,15 @@ namespace first_kinect {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->btnStart = (gcnew System::Windows::Forms::Button());
 			this->btnStop = (gcnew System::Windows::Forms::Button());
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->SuspendLayout();
 			// 
 			// btnStart
 			// 
-			this->btnStart->Location = System::Drawing::Point(28, 91);
+			this->btnStart->Location = System::Drawing::Point(12, 12);
 			this->btnStart->Name = L"btnStart";
 			this->btnStart->Size = System::Drawing::Size(75, 23);
 			this->btnStart->TabIndex = 0;
@@ -70,7 +76,7 @@ namespace first_kinect {
 			// 
 			// btnStop
 			// 
-			this->btnStop->Location = System::Drawing::Point(155, 91);
+			this->btnStop->Location = System::Drawing::Point(93, 12);
 			this->btnStop->Name = L"btnStop";
 			this->btnStop->Size = System::Drawing::Size(75, 23);
 			this->btnStop->TabIndex = 1;
@@ -82,7 +88,7 @@ namespace first_kinect {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 162);
+			this->ClientSize = System::Drawing::Size(178, 44);
 			this->Controls->Add(this->btnStop);
 			this->Controls->Add(this->btnStart);
 			this->Name = L"Form1";
@@ -92,6 +98,8 @@ namespace first_kinect {
 
 		}
 #pragma endregion
+	private: DepthEngine^   DE;
+
 	private: System::Void Form1_Load_1(System::Object^  sender, System::EventArgs^  e) ;
 	private: System::Void btnStart_Click(System::Object^  sender, System::EventArgs^  e) ;
 	private: System::Void btnStop_Click_1(System::Object^  sender, System::EventArgs^  e) ;
